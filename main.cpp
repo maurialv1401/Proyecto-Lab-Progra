@@ -3,16 +3,13 @@
 //
 
 
-#include "tablero.h"
+#include "Tablero.h"
 #include "fstream"
 #include "iostream"
 
 using namespace std;
 
-int main () {
-    ofstream myfile;
-    myfile.open ("example.txt");
-    myfile << "Writing this to a file.\n";
-    myfile.close();
-    return 0;
+int main() {
+    Board<char> board;
+    board.show();
 }

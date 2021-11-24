@@ -1,0 +1,8 @@
+To do:
+- Adaptar tablero.h a usar templates <--
+- Función que lea y escriba comandos (usando el sintaxis del profe)
+- Metodo para posicionar los barcos
+- Crear clase Jugador
+- Funcion para atacar al azaar
+- Funcion para guardar coordenadas de ataques realizados
+
