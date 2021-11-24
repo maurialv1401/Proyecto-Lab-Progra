@@ -1,5 +1,4 @@
-// Laboratorio
-// Created by Leonardo Candio on 23 nov. 2021
+// Proyecto Final
 // PROG2 | 2021 - 2.
 
 #ifndef PROG2_TABLERO_H
