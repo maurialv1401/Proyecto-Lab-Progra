@@ -1,4 +1,5 @@
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -47,8 +48,6 @@ public:
   void colocar(int x, int y, string let){
     this->zona[x][y]= let;
   }
-
-  
 
 
 };
