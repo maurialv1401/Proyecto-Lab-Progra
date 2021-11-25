@@ -5,11 +5,14 @@
 #define PROG2_TABLERO_H
 
 #include <iostream>
+#include <iomanip>
 
 
 using std::cin;
 using std::cout;
 using std::endl;
+using std::setw;
+using std::setfill;
 
 template<class T>
 class Board {
@@ -61,13 +64,13 @@ public:
     void show() const {
         cout << "  ";
         for (int i = 0; i < 10; ++i) {
-            printf( "%2c",'A'+i);
+            cout << setw(2) <<char('A' + i);
         }
         cout << endl;
         for (int i = 0; i < SIZE; i++) {
-            printf("%2d ", i+1);
+            cout <<setw(2) <<std::right<<i+1<< " ";
             for (int j = 0; j < SIZE; j++) {
-                cout << board[i][j] << " ";
+                cout << setw(2) << std::left <<board[i][j];
             }
             cout << endl;
         }
