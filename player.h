@@ -11,6 +11,7 @@ using std::string;
 
 class player {
 public:
+    string number = "FirstPlayer";
     string handshake="test";
 };
 

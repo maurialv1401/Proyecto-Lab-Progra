@@ -18,12 +18,14 @@
 #include "board.h"
 #include "player.h"
 #include "iocommand.h"
-#include "ctime"
-
 
 
 using namespace std;
 
 int main() {
+    player player_test;
+    filesystem::path path = R"(C:\Users\leona\OneDrive\UTEC\2021-2\PROG2\Proyecto-Lab-Progra\io)";
+
+    IOcommand io(player_test, path);
 
 }
