@@ -8,36 +8,32 @@
 using namespace std;
 
 
-vector<string> letters = {"A","B","C","D","E","F","G","H","I","J"};
+vector<string> letters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
 
-vector<string> split (const string &s, char delim) {
-  vector<string> result;
-  stringstream ss (s);
-  string item;
-  while (getline (ss, item, delim)) {
-    result.push_back (item);
-  }
+vector<string> split(const string &s, char delim) {
+    vector<string> result;
+    stringstream ss(s);
+    string item;
+    while (getline(ss, item, delim)) {
+        result.push_back(item);
+    }
 
-  return result;
+    return result;
 }
 
-template <typename T>
-pair<bool, int> findInVector(const vector<T>& vecOfElements, const T &element)
-{
-  pair<bool, int> result;
-  // Find given element in vector
-  size_t it = find(vecOfElements.begin(), vecOfElements.end(), element);
-  if (it != vecOfElements.end())
-  {
-    result.second = distance(vecOfElements.begin(), it);
-    result.first = true;
-  }
-  else
-  {
-    result.first = false;
-    result.second = -1;
-  }
-  return result;
+template<typename T>
+pair<bool, int> findInVector(const vector<T> &vecOfElements, const T &element) {
+    pair<bool, int> result;
+    // Find given element in vector
+    size_t it = find(vecOfElements.begin(), vecOfElements.end(), element);
+    if (it != vecOfElements.end()) {
+        result.second = distance(vecOfElements.begin(), it);
+        result.first = true;
+    } else {
+        result.first = false;
+        result.second = -1;
+    }
+    return result;
 }
 
 

@@ -64,7 +64,7 @@ public:
     void show() const {
         cout << "  ";
         for (int i = 0; i < 10; ++i) {
-            cout << setw(2) <<char('A' + i);
+            cout << setw(2) << std::right <<char('A' + i);
         }
         cout << endl;
         for (int i = 0; i < SIZE; i++) {

@@ -12,7 +12,23 @@ using std::string;
 class player {
 public:
     string number = "FirstPlayer";
-    string handshake="test";
+    string handshake="ASSDhfg";
+
+    const string &getNumber() const {
+        return number;
+    }
+
+    void setNumber(const string &number) {
+        player::number = number;
+    }
+
+    const string &getHandshake() const {
+        return handshake;
+    }
+
+    void setHandshake(const string &handshake) {
+        player::handshake = handshake;
+    }
 };
 
 

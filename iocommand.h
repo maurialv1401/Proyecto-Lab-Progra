@@ -6,58 +6,38 @@
 #define PROYECTO_LAB_PROGRA_IOCOMMAND_H
 
 #include <iostream>
-#include <file.h>
+#include <filehandler.h>
+#include "player.h"
+#include "command.h"
+#include "vector"
+#include "unordered_map"
 
 using std::string;
 using std::fstream;
 using std::filesystem::path;
+using std::vector;
+using std::unordered_map;
 
 
 class IOcommand {
+
 private:
-    int command_counter = 0;
-    string token;
-    path IOdirectory;
-    player player;
-    file fileIn;
-    file fileOut;
-    file fileNot;
-
-
 public:
-    IOcommand(const class player& player, const path& directory): IOdirectory(directory) {
-        // Use absolute path
-        fileIn.initialize(IOdirectory / (player.number+".in"));
-        fileOut.initialize(IOdirectory / (player.number+".out"));
-        fileNot.initialize(IOdirectory / (player.number+".not"));
-    }
-    virtual ~IOcommand()= default;
+    IOcommand(const path &directory, const player &player);
+    bool initializeGame();
+    command getCommand(vector<string> content, int type);
+    void initializeCommandMap();
+    virtual ~IOcommand();
 
-    const string &getDirectory() const {
-        return IOdirectory;
-    }
-
-    const string &getToken() const {
-        return token;
-    }
-
-    const class player &getPlayer() const {
-        return player;
-    }
-
-    const file &getFileIn() const {
-        return fileIn;
-    }
-
-    const file &getFileOut() const {
-        return fileOut;
-    }
-
-    const file &getFileNot() const {
-        return fileNot;
-    }
-
-
+private:
+    int commandCounter = 0;
+    string delim="=";
+    path ioDirectory;
+    player targetPlayer;
+    filehandler *fileIn, *fileOut, *fileNot;
+    vector<command> inputHistory;
+    unordered_map<string, int> statusMap;
+    unordered_map<string, string> constantsMap;
 };
 
 
