@@ -7,7 +7,7 @@
 #include <utility>
 struct command {
     int id;
-    std::pair<char, int> position;
+    std::pair<int, int> position;
 
     command(int id, int x, int y) : id(id), position(x,y) {}
 };

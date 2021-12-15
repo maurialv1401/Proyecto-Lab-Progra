@@ -23,17 +23,18 @@ class IOcommand {
 
 private:
 public:
-    IOcommand(const path &directory, const player &player);
+    IOcommand(const path &directory, player *player);
     bool initializeGame();
-    command getCommand(vector<string> content, int type);
-    void initializeCommandMap();
+    command readCommand(vector<string> content, int type);
+    void initializeStatusMap();
+    void setInitialPos();
     virtual ~IOcommand();
 
 private:
     int commandCounter = 0;
     string delim="=";
     path ioDirectory;
-    player targetPlayer;
+    player *targetPlayer;
     filehandler *fileIn, *fileOut, *fileNot;
     vector<command> inputHistory;
     unordered_map<string, int> statusMap;

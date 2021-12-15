@@ -15,13 +15,11 @@
 
 
 
-#include "board.h"
-#include "player.h"
-#include "iocommand.h"
 
 
 
 
+#include "game.h"
 
 /* Algoritmo y comandos
  *
@@ -32,6 +30,7 @@
  *
  *
  * Leyenda de status:
+ * First read (almacenar token) : -1
  * Failed: 0
  * Damaged: 1
  * Destroyed: 2
@@ -49,25 +48,8 @@ using namespace std;
 
 
 int main() {
-    player player_test;
-    filesystem::path target_directory = "/mnt/c/Users/leona/OneDrive/UTEC/2021-2/PROG2/Proyecto-Lab-Progra/io";
-
-    auto *io_test = new IOcommand(target_directory, player_test);
-
-    bool a = io_test->initializeGame();
-
-
-    std::cout << "finallll: " << a;
-
-    // Mandar primer _player.in
-    // leer primer _player.out
-    // guardar toker
-    // Mandar en el mismo archivo todas las posiciones definidas por un template aleatorio
-    // El segundo .out avisa que esta lleno
-    // mandar primer ataque definido por el algoritmo
-    //
-
-
-    delete io_test;
+    auto *game = new class game();
+    game->run();
+    delete game;
 }
 
