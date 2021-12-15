@@ -34,30 +34,10 @@ bool find_vec(string position){
   for (auto coord: shots){
     if (coord == position)
       return true;
-    return false;
   }
+  return false;
     
 }
-
-template < typename T>
-std::pair<bool, int > findInVector(const std::vector<T>  & vecOfElements, const T  & element)
-{
-    std::pair<bool, int > result;
-    // Find given element in vector
-    auto it = std::find(vecOfElements.begin(), vecOfElements.end(), element);
-    if (it != vecOfElements.end())
-    {
-        result.second = distance(vecOfElements.begin(), it);
-        result.first = true;
-    }
-    else
-    {
-        result.first = false;
-        result.second = -1;
-    }
-    return result;
-}
-
 
 string pos_to_string(int r, int c){
   string res = letters[r]+nums[c];
