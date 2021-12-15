@@ -5,9 +5,10 @@
 using namespace std;
 
 vector<string> split(const string &s, char delim);
-template <typename T>
-pair<bool, int> findInVector(const vector<T>& vecOfElements, const T &element);
+void save_pos(string pos);
+void show_vec();
+bool find_vec(string position);
+string pos_to_string(int r, int c);
+string random_pos();
 
-
-//void save_shots(std::vector<string>& shots, string input, int &n);
 
