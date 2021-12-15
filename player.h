@@ -1,3 +1,4 @@
+
 //
 // Created by leona on 25 nov. 2021.
 //
@@ -28,20 +29,19 @@ public:
   bool horizontal=false;
   // void empezar(){
     // que escriba handshake, espere el archivo .out y guarde el token
-
-  };
+ 
   
-  // void command(string com){}; // escribir archivo con indicacion anadir .in
-  // si el archivo.out contiene "DAMAGED" cambiar hunting a false y hit a true. si contiene "DESTROYED" volver a hunting a true, si es "FAILED" volver horizontal a false
+  void command(string com){}; // escribir archivo con indicacion anadir .in
+  // si el archivo.out contiene "DAMAGED" cambiar hunting a false y hit a true. si contiene "DESTROYED" volver a hunting a true, si es "FAILED" volver horizontal a false y hit a false
 
   void search(int &r, int &c, int &i){
     if (hit){
       if (horizontal){
-        if(zona->isValid(c-1)){
+        if(zona->isValid(c-1) and find_vec(pos_to_string(r,c-1))){
           c--;
           string position="ATTACK="+pos_to_string(r,c);
           command(position);
-        }else if(zona->isValid(c+1)){
+        }else if(zona->isValid(c+1) and find_vec(pos_to_string(r,c-1))){
           c++;
           string position="ATTACK="+pos_to_string(r,c);
           command(position);
@@ -77,33 +77,39 @@ public:
 
   void turn(int &r, int &c, int &i){
     srand(time(NULL));
-    if (hunting){
+    if (hunting) // no se ha acertado el disparo
+    { 
+      do{
+      // tiro aleatorio
       r = rand()%zona->getSize();
       c = rand()%zona->getSize();
-      string position="ATTACK="+pos_to_string(r,c);
-      command(position);
-    }else{
-      if(!searching and zona->isValid(c-1)){
+      }while(find_vec(pos_to_string(r,c)));
+    string position="ATTACK="+pos_to_string(r,c);
+    save_pos(position); 
+    command(position);  
+    }else // hay una nave spoteada
+    {
+      if(!searching and zona->isValid(c-1) and find_vec(pos_to_string(r,c-1))){
         string position="ATTACK="+pos_to_string(r,c-1);
         command(position);
         searching = true;
         i=1;
         c--;
         horizontal=true;
-      }else if(!searching and zona->isValid(c+1)){
+      }else if(!searching and zona->isValid(c+1) and find_vec(pos_to_string(r,c+1))){
         string position="ATTACK="+pos_to_string(r,c+1);
         command(position);
         searching = true;
         i=2;
         c++;
         horizontal=true;
-      }else if(!searching and zona->isValid(r-1)){
-        string position="ATTACK="+pos_to_string(r-1,);
+      }else if(!searching and zona->isValid(r-1) and find_vec(pos_to_string(r-1,c))){
+        string position="ATTACK="+pos_to_string(r-1,c);
         command(position);
         searching = true;
         i=3;
         r--;
-      }else if(!searching and zona->isValid(r+1)){
+      }else if(!searching and zona->isValid(r+1) and find_vec(pos_to_string(r+1,c))){
         string position="ATTACK="+pos_to_string(r+1,c);
         command(position);
         searching = true;
