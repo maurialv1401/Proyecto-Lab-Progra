@@ -60,20 +60,25 @@ public:
             throw "Index out of bounds";
         board[r][c] = value;
     }
-
-    void show() const {
-        cout << "  ";
-        for (int i = 0; i < 10; ++i) {
-            cout << setw(2) << std::right <<char('A' + i);
+    
+  bool isValid(int pos){
+    if (pos < 0 || pos >= SIZE)
+      return true;
+  }
+    
+  void show() const {
+    cout << "  ";
+    for (int i = 0; i < 10; ++i) {
+        cout << setw(2) << std::right <<char('A' + i);
+    }
+    cout << endl;
+    for (int i = 0; i < SIZE; i++) {
+        cout <<setw(2) <<std::right<<i+1<< " ";
+        for (int j = 0; j < SIZE; j++) {
+            cout << setw(2) << std::left <<board[i][j];
         }
         cout << endl;
-        for (int i = 0; i < SIZE; i++) {
-            cout <<setw(2) <<std::right<<i+1<< " ";
-            for (int j = 0; j < SIZE; j++) {
-                cout << setw(2) << std::left <<board[i][j];
-            }
-            cout << endl;
-        }
+    }
     }
 
     ~Board() {
