@@ -26,12 +26,12 @@ public:
   bool searching = false;
   bool hit=false;
   bool horizontal=false;
-  void empezar(){
+  // void empezar(){
     // que escriba handshake, espere el archivo .out y guarde el token
 
   };
   
-  void command(string com){}; // escribir archivo con indicacion anadir .in
+  // void command(string com){}; // escribir archivo con indicacion anadir .in
   // si el archivo.out contiene "DAMAGED" cambiar hunting a false y hit a true. si contiene "DESTROYED" volver a hunting a true, si es "FAILED" volver horizontal a false
 
   void search(int &r, int &c, int &i){
@@ -58,6 +58,19 @@ public:
         }
       }
     }else{
+      if(zona->isValid(c+1) and i==1){
+          c++;
+          string position="ATTACK="+pos_to_string(r,c);
+          command(position);
+        }else if(zona->isValid(r-1)){
+          r--;
+          string position="ATTACK="+pos_to_string(r,c);
+          command(position);
+        }else if(zona->isValid(r+1)){
+          r++;
+          string position="ATTACK="+pos_to_string(r,c);
+          command(position);
+        }
 
     }
   }
